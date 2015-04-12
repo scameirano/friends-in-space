@@ -18,6 +18,7 @@ if (process.env.NODE_ROLE == 'master') {
         secret: process.env.FIS_TWT_SECRET,
         loginStyle: "popup"
     });
+
     ServiceConfiguration.configurations.insert({
         service: "facebook",
         appId: process.env.FIS_FB_KEY,

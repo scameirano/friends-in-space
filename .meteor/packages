@@ -8,7 +8,6 @@ service-configuration
 u2622:persistent-session
 jbrousseau:meteor-collection-behaviours
 mrt:moment
-less
 underscore
 jquery
 d3
@@ -32,4 +31,6 @@ fis-sam-feeds
 fis-twitter-text
 perfect-scrollbar
 modulus-operations
+less
+bootstrap
 

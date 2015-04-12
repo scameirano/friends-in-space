@@ -459,7 +459,7 @@ IssTracker.prototype.setupDOM = function () {
 
     self.dom.map = self.dom.container.find('.map');
     //TODO FIND A BETTER WAY TO SPECIFY HTML HERE
-    self.dom.singleMarkerPopup = $('<div class="single-marker-popup"><div class="image"></div><div class="user"><span class="user-name"></span> &#8213; <span class="user-location"></span></div><div class="statistics"><span class="sam-orbits"><span class="sam-orbits-number"></span> ORBITS WITH SAM</span> / <span class="connected-people"><span class="connected-people-number"></span> FRIENDS IN SPACE</span></div><div class="not-logged-in-notice">log in for more features</div><div class="actions"><span class="popup-action"><a class="interactions user-interactions"><span>See Activity</span></a></span><span class="twitter-interactions"><span class="popup-action"><a class="interactions tweet" href="" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;">Tweet</a></span><span class="popup-action"><a class="interactions twitter-account" href="" target="_blank">Twitter profile</a></span></span><span class="google-plus-interactions"><span class="popup-action"><a class="interactions google-plus-account" href="" target="_blank">Google+ profile</a></span></span><span class="facebook-interactions"><span class="popup-action"><a class="interactions facebook-account" href="" target="_blank">Facebook profile</a></span></span></div></div>')
+    self.dom.singleMarkerPopup = $('<div class="single-marker-popup"><div class="image"></div><div class="user"><span class="user-name"></span> &#8213; <span class="user-location"></span></div><div class="statistics"><span class="sam-orbits"><span class="sam-orbits-number"></span> ORBITS WITH SAM</span> / <span class="connected-people"><span class="connected-people-number"></span> FRIENDS IN SPACE</span></div><div class="not-logged-in-notice">log in for more features</div><div class="actions"><span class="popup-action"><a class="interactions user-interactions"><span>See Activity</span></a></span><span class="chat-interactions"><span class="popup-action"><a class="interactions chat" onclick="">Chat</a></span>/span><span class="twitter-interactions"><span class="popup-action"><a class="interactions tweet" href="" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;">Tweet</a></span><span class="popup-action"><a class="interactions twitter-account" href="" target="_blank">Twitter profile</a></span></span><span class="google-plus-interactions"><span class="popup-action"><a class="interactions google-plus-account" href="" target="_blank">Google+ profile</a></span></span><span class="facebook-interactions"><span class="popup-action"><a class="interactions facebook-account" href="" target="_blank">Facebook profile</a></span></span></div></div>')
     self.dom.clusterMarkerPopup = $('<div class="cluster-marker-popup"><span class="text"><span class="people"></span> PEOPLE</span> &#8213; <span class="location"></span></div>');
     self.dom.eventsSpotPopup = $('<div class="event-spot-popup"><span class="description"></span> - <span class="person"></span></div>');
     self.dom.currentView = self.dom.container.find('.current-view');
@@ -838,6 +838,8 @@ IssTracker.prototype.showPopupMarkerSingle = function (feature) {
             self.dom.singleMarkerPopup.find('.image').css('background-image', 'url(' + imageUrl + ')');
 
             self.dom.singleMarkerPopup.find('.sam-orbits-number').text(userData.profile.onOrbit ? userData.profile.onOrbit.length : 0);
+            self.dom.singleMarkerPopup.find('.chat-interactions').show();
+
             if (userData.profile.friends) {
                 self.dom.singleMarkerPopup.find('.connected-people-number').text(userData.profile.friends ? userData.profile.friends.length : 0);
             } else {
@@ -855,12 +857,14 @@ IssTracker.prototype.showPopupMarkerSingle = function (feature) {
 
                 self.dom.singleMarkerPopup.find('.interactions.tweet').attr('href', url);
                 self.dom.singleMarkerPopup.find('.interactions.twitter-account').attr('href', userData.profile.profileLink);
+                //self.dom.singleMarkerPopup.find('.chat-interactions').show();
                 self.dom.singleMarkerPopup.find('.twitter-interactions').show();
                 self.dom.singleMarkerPopup.find('.google-plus-interactions').hide();
                 self.dom.singleMarkerPopup.find('.facebook-interactions').hide();
             } else if (userData.profile.service == 'google') {
 
                 self.dom.singleMarkerPopup.find('.interactions.google-plus-account').attr('href', userData.profile.profileLink);
+                //self.dom.singleMarkerPopup.find('.chat-interactions').show();
                 self.dom.singleMarkerPopup.find('.twitter-interactions').hide();
                 self.dom.singleMarkerPopup.find('.google-plus-interactions').show();
                 self.dom.singleMarkerPopup.find('.facebook-interactions').hide();

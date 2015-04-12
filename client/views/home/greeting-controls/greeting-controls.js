@@ -29,7 +29,7 @@ Template.fisGreetingControls.helpers({
 
 Template.fisGreetingControls.events({
     'click #greetings': function () {
-
+        alert('GREETINGS');
         Meteor.call('sendEarthGreetings', Session.get(FIS.KEYS.UUID), function () {
         });
 
