@@ -1,0 +1,28 @@
+#myModal 
+{
+    width: 1500px; 
+    #margin-left:  -650px !important; 
+} 
+
+#myModal .modal-body {
+    #max-height: 100%;
+}
+
+h4, li {
+	color: black;
+}
+
+p {
+	color: black;
+}
+
+.container {
+	#margin-left: 0px;
+	#margin-right: 0px;
+}
+
+.modal {
+  #position: fixed;
+  #top: 10%;
+    left: 280px;
+ }

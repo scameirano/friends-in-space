@@ -1,5 +1,5 @@
 // Write your package code here!
-Messages = new Mongo.Collection("messages");
+Messages = new Mongo.Collection("msg");
 Rooms = new Mongo.Collection("rooms");
 
 
@@ -10,6 +10,8 @@ if (Meteor.isServer) {
     if (Rooms.find().count() === 0) {
       ["Meteor", "JavaScript", "Reactive", "MongoDB", "Sere's Topic"].forEach(function(r) {
         Rooms.insert({roomname: r});
+        Messages.insert({"msg":"LAtest from Server","ts":"2015-04-12T07:13:13.691Z","room":"Reactive"});
+ 
       });
     }
   });
@@ -43,11 +45,12 @@ if (Meteor.isServer) {
     remove: function (userId, doc) {
       return true;
     }
- 
+  });
+  
   Meteor.publish("rooms", function () {
     return Rooms.find();
   });
-  Meteor.publish("messages", function () {
-    return Messages.find({}, {sort: {ts: -1}});
+  Meteor.publish("msg", function () {
+    return Messages.find({});
   });
 }
