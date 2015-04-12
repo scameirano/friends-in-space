@@ -2,6 +2,7 @@ var logger = FIS.Log.getLogger('startup');
 logger.info("Starting Friends in space on [%s][%s] server ...",process.env.NODE_ROLE);
 
 
+
 if (process.env.NODE_ROLE == 'master') {
 
     //SETUP LOGIN CONFIG
@@ -38,6 +39,8 @@ if (process.env.NODE_ROLE == 'master') {
 
 Meteor.startup(function () {
 
+   
+
 
 
     //only master node will update TLE and Orbits
@@ -61,6 +64,7 @@ Meteor.startup(function () {
     configureOnlineStatusMethods();
     configureOrbitMethods();
     configureUsersMethods();
+    configMessage();
 
 });
 
@@ -222,6 +226,37 @@ function configureOrbitMethods() {
     });
 }
 
+
+
+function configMessage(){
+
+  
+    /**
+    * Allow messages to be added.
+    */
+   /* Messages = new Meteor.Collection('messages');
+
+    Messages.allow({
+        'insert' : function() {
+            return true;
+        }
+    });
+
+    Meteor.publish("getMessages", function (mg){
+       logger.info('getting message');
+       return Messages.find({}, {sort: {date: -1}, limit: 10});
+    });
+
+    Meteor.methods({
+
+     
+        insertMessage: function(mg) {
+            Messages.insert(mg);
+        }
+    });*/
+}
+
+
 function configureUsersMethods() {
 
 
@@ -236,6 +271,10 @@ function configureUsersMethods() {
     });
 
     Meteor.methods({
+
+        getUsers: function (){
+            return Meteor.users;
+        },
 
         getUser: function (userId) {
             var user = Meteor.users.findOne({_id: userId}, {fields: {profile: 1}});

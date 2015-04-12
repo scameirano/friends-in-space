@@ -1,3 +1,5 @@
+Messages = new Meteor.Collection("Messages");
+
 Template.registerHelper('tweetToUser', function(twitterScreenName){
 
     var urls = [
