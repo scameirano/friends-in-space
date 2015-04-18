@@ -1,8 +1,8 @@
-#Friends In Space
+#Friends In Space - International Team - Friends in Hight Places Challenge - Nasa's SpaceApps Challenge
 
-Friends in Space is the first social network that extends beyond Earth;
-a 6 months-long open window to make new friends from all over the world and join astronaut Samantha Cristoforetti
-in her expedition to the International Space Station.
+Starting from Accurat's FriendsInSpace app http://www.friendsinspace.org/ and from their code : https://github.com/accurat/friends-in-space that we forked here : https://github.com/pergjergji/friends-in-space We will try to add new cool feutures to the FriendsInSpace App. If you would like to join the project, you are welcome. 
+
+https://2015.spaceappschallenge.org/project/friendsinspace---international-team/
 
 ##Installation
 
@@ -29,7 +29,6 @@ With a distributed environment, each instance of meteor needs to be configured t
 The Twitter Access Token and Twitter Access Token Secret are required to request and keep updated the Sam's Twitter Feed.
 
 ##Run
-
 
 The current version is implemented to start from a clean state of Orbits. This means that every time you start the application
 the ``FIS.Orbits`` object request to clean all the orbits from the database, and recreate all the orbits until now.
